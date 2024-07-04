@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_cmds_class.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ichpakov <ichpakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 23:17:22 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/06/19 16:13:38 by vboxuser         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:59:17 by ichpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	ms_exec_class(t_params *cmds, t_env **env, t_data **data, t_put *puts)
 		ms_exit(cmds, env, data, puts);
 	else if (execve_checker(cmds->com) == 1)
 	{
-		ms_exec(cmds, get_env(env));
+		ms_exec(cmds, get_env(env), *env);
 		exec_error(2);
 	}
 	return (0);

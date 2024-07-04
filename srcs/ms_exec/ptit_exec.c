@@ -6,17 +6,25 @@
 /*   By: ichpakov <ichpakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:02:34 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/07/03 13:59:42 by ichpakov         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:05:04 by ichpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ms_exec(t_params *cmds, char **env)
+void	ms_exec(t_params *cmds, char **env, t_env *t_env)
 {
 	char	**s_cmd;
 	char	*path;
 
+	while(t_env)
+	{
+		if (ft_strstr(t_env->env_name, "PATH"))
+			break;
+		t_env = t_env->next;
+	}
+	if (!t_env)
+		exit(2);
 	s_cmd = cmds->com;
 	path = get_path(s_cmd[0], env);
 	execve(path, s_cmd, env);

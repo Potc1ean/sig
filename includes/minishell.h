@@ -6,7 +6,7 @@
 /*   By: ichpakov <ichpakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:51:36 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/07/03 14:09:24 by ichpakov         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:59:29 by ichpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	handler_signal(int signal);
 //exec
 int		ms_exec_loop(t_data *data, t_params **cmds, t_put *puts, t_env **env);
 int		ms_exec_class(t_params *cmds, t_env **env, t_data **data, t_put *puts);
-void	ms_exec(t_params *cmds, char **env);
+void	ms_exec(t_params *cmds, char **env, t_env *t_env);
 void	ms_input(t_data *data, t_put *puts);
 void	ms_output(t_data *data, t_put *puts, int rdr);
 void	close_file(int fd);

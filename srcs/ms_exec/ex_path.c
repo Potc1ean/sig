@@ -6,7 +6,7 @@
 /*   By: ichpakov <ichpakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:14 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/07/03 13:57:42 by ichpakov         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:37:29 by ichpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	execve_checker(char **cmd)
 	char	*path_part;
 
 	i = -1;
+	allpath = NULL;
 	allpath = ft_split(getenv("PATH"), ':');
 	if (!allpath)
 		return (printf(MSG_NOT_FOUND"%s\n", cmd[0]));
@@ -93,7 +94,7 @@ int	execve_checker(char **cmd)
 		path_part = ft_strjoin(allpath[i], "/");
 		exec = ft_strjoin(path_part, cmd[0]);
 		free(path_part);
-		if (access(exec, F_OK | X_OK) == 0 || (ft_strstr(cmd[0], "./") != NULL
+		if (access(exec, F_OK | X_OK) == 0 || (ft_strchr(cmd[0], '/') != NULL
 				&& access(cmd[0] + 1, F_OK | X_OK)))
 			return (1);
 		free(exec);
